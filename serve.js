@@ -211,6 +211,6 @@ app.post('/scraping-cate', async (req, res) => {
     }) 
 })
 
-app.listen(5050, () =>{
+app.listen(3000, () =>{
     console.log("hola mundo  2")
 });
