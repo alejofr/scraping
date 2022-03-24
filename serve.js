@@ -39,11 +39,12 @@ const formatterPeso = new Intl.NumberFormat('es-CO', {
 
 
 app.post('/scraping-prod', async (req, res) => {
-    
+   
     const browser = await puppeteer.launch(
         {
             headless: false,
-            executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
+            executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+            args: ['--no-sandbox', '--disable-setuid-sandbox']
         }
     );
 
@@ -97,7 +98,7 @@ app.post('/scraping-prod', async (req, res) => {
     const despc = await page.$eval('div#productDescription_fullView p',  el => el.innerText);
 
    
-    //await browser.close();
+    await browser.close();
 
     res.json({
         data: {
@@ -115,7 +116,8 @@ app.post('/scraping-cate', async (req, res) => {
     const browser = await puppeteer.launch(
         {
             headless: false,
-            executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
+            executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+            args: ['--no-sandbox', '--disable-setuid-sandbox']
         }
     );
 
